@@ -1,0 +1,33 @@
+﻿{
+  "name": "giffo-min",
+  "version": "0.0.1",
+  "description": "Minifies js file via commandline",
+  
+  "scripts": {
+      "test": "echo \"no test available\" && exit 1"
+  },
+  
+  "bin": {
+      "min": "./bin/cli-min"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/giffo/min.git"
+  },
+  "keywords": [
+    "min",
+    "minifier",
+    "ugly",
+    "uglify"
+  ],
+  "author": "giffo <github@giffo.org>",
+  "license": "none, free, giffo",
+  "bugs": {
+    "url": "https://github.com/giffo/min/issues"
+  },
+  "dependencies": {
+   "uglify-js": "*"
+
+  },
+  "homepage": "https://github.com/giffo/min#readme"
+}

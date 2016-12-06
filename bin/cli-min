@@ -1,0 +1,58 @@
+﻿#! /usr/bin/env node
+
+var path = require("path");
+var fs = require('fs');
+var ugly = require('uglify-js');
+
+
+/*
+takes a filename via command line and spits out a minified version into the same directory,
+haven't thought about relative file paths, 
+
+
+usage: 
+min c:\nodejsfiles\something\hello.js
+*/
+
+
+var filename = process.argv[2].trim();
+var dir = path.dirname(filename);
+var actual = path.basename(filename, ".js");
+var ext = path.extname(filename);
+
+
+try {
+	fs.accessSync(filename);
+} catch(err){
+	console.log("ERROR > " +filename + " not found");
+	process.exit(1);	
+}
+
+try {
+	var result = ugly.minify(filename, {
+		mangle: true,
+		
+		compress: {
+			sequences: true,
+			dead_code: true,
+			conditionals: true,
+			booleans: true,
+			unused: true,
+			if_return: true,
+			join_vars: true
+			,drop_console: true
+			
+			
+		}
+	});
+
+	
+	var minFilename = dir + path.sep + actual + ".min"+ext;
+
+	console.log("Minifed "+minFilename);
+
+	fs.writeFileSync(minFilename, result.code);
+} catch(err){
+	console.log("ERROR > "+err.message);
+}
+
