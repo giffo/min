@@ -12,10 +12,14 @@ usage:
 	min <file>
 
 
-example:
+example in the command-line console:
 
 	min c:\js\hello.js
 
 results in 'c:\js\hello.min.js' being created.
 
 
+
+
+todo:
+next version, check if param is a directory and then minify the whole directory
